@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0f1015;
+  --paper: #f8f9fa;
+  --crimson: #d90429;
+  --crimson-dark: #b8001f;
+  --gold: #ffb703;
+  --background: #0f1015;
+  --foreground: #f8f9fa;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-crimson: var(--crimson);
+  --color-gold: var(--gold);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Site-wide Custom Cursor Enforcement */
+html, body, button, a, input, select, textarea, [role="button"] {
+  cursor: none !important;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+.hard-border-b {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeFast {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes bgPan {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+.marquee-track-ticker {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-ticker:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track-fast {
+  display: flex;
+  width: max-content;
+  animation: marqueeFast 45s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-fast:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-slow:hover {
+  animation-play-state: paused;
+}
+
+.bg-pan {
+  animation: bgPan 12s linear infinite;
+  background-size: 200px 200px;
+}
+
+.blink {
+  animation: blink 1.2s infinite ease-in-out;
+  color: var(--crimson);
+  display: inline-block;
+}
+
+/* Custom scrollbar for modern feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--crimson);
+}
