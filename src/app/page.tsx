@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import LiveTickerCMS, { TickerItem } from "@/components/LiveTickerCMS";
 import FlashSaleBanner from "@/components/FlashSaleBanner";
 import Header from "@/components/Header";
+import SectionSearchCommand from "@/components/SectionSearchCommand";
 import ProductCatalog, { Product } from "@/components/ProductCatalog";
 import CartDrawer, { CartItem } from "@/components/CartDrawer";
 import CMSControlPanel from "@/components/CMSControlPanel";
@@ -11,6 +12,8 @@ import BlogSection from "@/components/BlogSection";
 import FeaturedBrandsSection from "@/components/FeaturedBrandsSection";
 import SpotlightShowcase from "@/components/SpotlightShowcase";
 import ExperienceShowcaseSection from "@/components/ExperienceShowcaseSection";
+import BetopiaOrbitalShowcase from "@/components/BetopiaOrbitalShowcase";
+import DynamicAiPromptConsole from "@/components/DynamicAiPromptConsole";
 import HeroInteractiveShowcase from "@/components/HeroInteractiveShowcase";
 import CustomGlobalCursor from "@/components/CustomGlobalCursor";
 import { TracingBeam } from "@/components/TracingBeam";
@@ -98,6 +101,15 @@ export default function Home() {
         {/* Hero Interactive Showcase Section */}
         <HeroInteractiveShowcase />
 
+        {/* Global Section Quick-Command Search Bar (Screenshot Style) */}
+        <div className="bg-[#07080e] py-8 px-4 border-b border-zinc-800/80">
+          <SectionSearchCommand 
+            variant="hero"
+            onSearchCatalogQuery={(q) => setSearchQuery(q)}
+            onOpenCart={() => setIsCartOpen(true)}
+          />
+        </div>
+
         {/* Featured Brands (Stocked Here) Carousel */}
         <FeaturedBrandsSection onSelectBrand={(brandName) => setSearchQuery(brandName)} />
 
@@ -114,6 +126,12 @@ export default function Home() {
 
         {/* Experience & Battle-Tested Incidents Showcase */}
         <ExperienceShowcaseSection />
+
+        {/* FEATURE 1: BetopiaAI Planetary Orbital Intelligence Hub */}
+        <BetopiaOrbitalShowcase />
+
+        {/* FEATURE 2: Dynamic AI Prompt Command Console & Live Execution Stream */}
+        <DynamicAiPromptConsole />
 
         {/* Floating Interactive CMS Event Controller */}
         <CMSControlPanel onAddAlert={handleAddTickerAlert} />

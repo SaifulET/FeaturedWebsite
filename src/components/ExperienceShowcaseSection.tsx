@@ -107,7 +107,7 @@ export default function ExperienceShowcaseSection() {
   };
 
   return (
-    <section id="ai-experience-section" className="hard-border-b bg-zinc-950 py-12 text-zinc-100 relative">
+    <section id="experience" className="hard-border-b bg-zinc-950 py-12 text-zinc-100 relative">
       <div className="mx-auto max-w-[1440px] px-3 sm:px-5 lg:px-6">
         {/* Header */}
         <div className="mb-8 flex flex-col gap-2 border-b-2 border-zinc-800/80 pb-4 sm:flex-row sm:items-end sm:justify-between">

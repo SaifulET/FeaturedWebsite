@@ -38,6 +38,7 @@ export default function FlashSaleBanner({
   return (
     <>
       <section
+        id="flash-sale"
         className="hard-border-b relative overflow-hidden cursor-pointer select-none group"
         style={{ background: "var(--crimson)", color: "rgb(255, 255, 255)" }}
         onClick={() => setShowPromoModal(true)}

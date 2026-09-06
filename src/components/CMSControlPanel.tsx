@@ -45,7 +45,7 @@ export default function CMSControlPanel({ onAddAlert }: CMSControlPanelProps) {
   ];
 
   return (
-    <div className="fixed bottom-4 right-4 z-40">
+    <div id="cms-panel" className="fixed bottom-4 right-4 z-40">
       {/* CMS Control Panel Toggle Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}

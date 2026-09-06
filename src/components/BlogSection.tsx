@@ -120,7 +120,7 @@ export default function BlogSection() {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <section className="hard-border-b bg-[var(--ink)] py-10 relative">
+    <section id="blog" className="hard-border-b bg-[var(--ink)] py-10 relative">
       <div className="mx-auto max-w-[1440px] px-3 sm:px-5 lg:px-6">
         {/* Header Row */}
         <div

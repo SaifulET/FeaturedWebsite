@@ -211,7 +211,7 @@ function SpotlightCard({ item }: { item: ProjectCardItem }) {
 
 export default function SpotlightShowcase() {
   return (
-    <section className="hard-border-b bg-[var(--ink)] py-12 relative overflow-hidden">
+    <section id="spotlight" className="hard-border-b bg-[var(--ink)] py-12 relative overflow-hidden">
       <div className="mx-auto max-w-[1440px] px-3 sm:px-5 lg:px-6">
         {/* Header */}
         <div
