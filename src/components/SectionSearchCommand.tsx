@@ -31,6 +31,16 @@ export interface SearchSectionItem {
 
 const SEARCHABLE_SECTIONS: SearchSectionItem[] = [
   {
+    id: "skills-section",
+    targetId: "skills",
+    title: "Web Development Skills & Technologies",
+    category: "Showcases",
+    keywords: ["skills", "html", "css", "javascript", "typescript", "react", "nextjs", "nodejs", "tailwind", "mongodb", "redux", "web development", "tech stack"],
+    description: "20 core tech stack proficiencies across frontend, backend, database, and dev tools.",
+    icon: <Code2 className="w-4 h-4 text-[#38bdf8]" />,
+    badge: "20 SKILLS"
+  },
+  {
     id: "betopia-models",
     targetId: "betopia-orbital",
     title: "BetopiaAI · 10+ Frontier AI Models",

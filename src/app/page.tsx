@@ -11,6 +11,7 @@ import CMSControlPanel from "@/components/CMSControlPanel";
 import BlogSection from "@/components/BlogSection";
 import FeaturedBrandsSection from "@/components/FeaturedBrandsSection";
 import SpotlightShowcase from "@/components/SpotlightShowcase";
+import SkillsSection from "@/components/SkillsSection";
 import ExperienceShowcaseSection from "@/components/ExperienceShowcaseSection";
 import BetopiaOrbitalShowcase from "@/components/BetopiaOrbitalShowcase";
 import DynamicAiPromptConsole from "@/components/DynamicAiPromptConsole";
@@ -123,6 +124,9 @@ export default function Home() {
 
         {/* Spotlight Showcase (Interactive Cursor Radial Spotlight) */}
         <SpotlightShowcase />
+
+        {/* Skills & Web Development Tech Stack Grid */}
+        <SkillsSection />
 
         {/* Experience & Battle-Tested Incidents Showcase */}
         <ExperienceShowcaseSection />
