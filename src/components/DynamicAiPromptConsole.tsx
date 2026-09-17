@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import AgentPromptInput from "./AgentPromptInput";
 import { 
   ArrowUp, 
   Sparkles, 
@@ -14,7 +15,8 @@ import {
   Zap, 
   Code2, 
   Cpu, 
-  Sliders
+  Sliders,
+  Send
 } from "lucide-react";
 
 interface PresetPrompt {

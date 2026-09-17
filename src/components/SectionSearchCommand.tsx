@@ -31,6 +31,16 @@ export interface SearchSectionItem {
 
 const SEARCHABLE_SECTIONS: SearchSectionItem[] = [
   {
+    id: "kinetic-buttons",
+    targetId: "button-collection",
+    title: "Kinetic Button Motion Collection (@_code_and_chill_)",
+    category: "Showcases",
+    keywords: ["button", "buttons", "kinetic", "jumping", "smoke", "drive", "animation", "motion", "solid", "contrast", "surface", "code_and_chill", "letter", "typography", "stagger"],
+    description: "Direction-aware kinetic typography buttons featuring Jumping, Smoke, and Drive with Solid, Contrast, and Surface tones.",
+    icon: <Sparkles className="w-4 h-4 text-amber-400" />,
+    badge: "NEW COLLECTION"
+  },
+  {
     id: "skills-section",
     targetId: "skills",
     title: "Web Development Skills & Technologies",

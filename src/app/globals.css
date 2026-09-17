@@ -140,3 +140,761 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--crimson);
 }
+
+/* ========================================================
+   KINETIC TYPOGRAPHY BUTTON SYSTEM (@_code_and_chill_)
+   ======================================================== */
+
+.gbtn {
+  --step: 0.038s;
+  --rev: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  font-family: inherit;
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  padding: 0.85rem 2.25rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: none !important;
+  user-select: none;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+/* Individual letter glyph container */
+.gbtn .g-wrap {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.gbtn .g {
+  display: inline-block;
+  will-change: transform, filter, opacity;
+  transform-origin: 50% 80%;
+}
+
+/* Space preserving character */
+.gbtn .g-space {
+  display: inline-block;
+  width: 0.35em;
+}
+
+/* Direction-aware letter stagger delay formula from @_code_and_chill_ */
+.gbtn.is-go .g {
+  animation-delay: calc(
+    var(--step) * (var(--i) + var(--rev) * (var(--n) - 1 - 2 * var(--i)))
+  );
+}
+
+/* Button Tones (Exact Colors from @_code_and_chill_) */
+
+/* 1. Solid Tone: Royal Blue Pill with Bold White Text */
+.gbtn--solid {
+  background: #2b5cf6;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 24px -4px rgba(43, 92, 246, 0.45), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.gbtn--solid:hover {
+  background: #2351ea;
+  box-shadow: 0 10px 30px -2px rgba(43, 92, 246, 0.6), 0 0 16px rgba(43, 92, 246, 0.4);
+  transform: translateY(-2px);
+}
+.gbtn--solid:active {
+  transform: translateY(1px);
+}
+
+/* 2. Contrast Tone: Deep Obsidian/Black Pill with Crisp White Text */
+.gbtn--contrast {
+  background: #11131d;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+.gbtn--contrast:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: #181b28;
+  box-shadow: 0 10px 28px -2px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+.gbtn--contrast:active {
+  transform: translateY(1px);
+}
+
+/* 3. Surface Tone: Pure White Pill with Royal Blue Text */
+.gbtn--surface {
+  background: #ffffff;
+  color: #2b5cf6;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+.gbtn--surface:hover {
+  background: #f8fafc;
+  border-color: rgba(43, 92, 246, 0.3);
+  box-shadow: 0 10px 28px -2px rgba(43, 92, 246, 0.22);
+  transform: translateY(-2px);
+}
+.gbtn--surface:active {
+  transform: translateY(1px);
+}
+
+/* Crimson Signature Tone */
+.gbtn--crimson {
+  background: linear-gradient(135deg, #d90429, #ef233c);
+  color: #ffffff;
+  border-color: rgba(255, 100, 100, 0.35);
+  box-shadow: 0 4px 20px -2px rgba(217, 4, 41, 0.45);
+}
+.gbtn--crimson:hover {
+  background: linear-gradient(135deg, #ef233c, #ff4d6d);
+  box-shadow: 0 6px 28px -2px rgba(217, 4, 41, 0.65), 0 0 20px rgba(217, 4, 41, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Cyber Neon Gold Tone */
+.gbtn--cyber {
+  background: #090a0f;
+  color: #ffb703;
+  border-color: rgba(255, 183, 3, 0.4);
+  box-shadow: 0 4px 20px -2px rgba(255, 183, 3, 0.2), inset 0 0 12px rgba(255, 183, 3, 0.08);
+}
+.gbtn--cyber:hover {
+  border-color: #ffb703;
+  box-shadow: 0 6px 28px -2px rgba(255, 183, 3, 0.4), inset 0 0 16px rgba(255, 183, 3, 0.15), 0 0 15px rgba(255, 183, 3, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Emerald Neon Tone */
+.gbtn--emerald {
+  background: #06150e;
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.2), inset 0 0 12px rgba(16, 185, 129, 0.08);
+}
+.gbtn--emerald:hover {
+  border-color: #10b981;
+  box-shadow: 0 6px 28px -2px rgba(16, 185, 129, 0.4), 0 0 15px rgba(16, 185, 129, 0.3);
+  transform: translateY(-1px);
+}
+
+/* ========================================================
+   ANIMATION KEYFRAMES (Jump, Smoke, Drive, Flip)
+   ======================================================== */
+
+/* 1. JUMP MOTION (Smooth elastic wave hop with apex float & soft settle) */
+.gbtn[data-fx="jump"].is-go .g {
+  animation: g-jump 0.46s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+@keyframes g-jump {
+  0% {
+    transform: translateY(0);
+  }
+  38% {
+    transform: translateY(-0.46em);
+  }
+  68% {
+    transform: translateY(0.08em);
+  }
+  84% {
+    transform: translateY(-0.02em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* 2. SMOKE MOTION (Ethereal upward vaporize, blur dissipation & return) */
+.gbtn[data-fx="smoke"].is-go .g {
+  animation: g-smoke 0.58s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+}
+
+@keyframes g-smoke {
+  0% {
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    opacity: 1;
+  }
+  42% {
+    transform: translateY(-0.78em) scale(1.35);
+    filter: blur(0.15em);
+    opacity: 0;
+    animation-timing-function: steps(1, end);
+  }
+  43% {
+    transform: translateY(0.78em) scale(0.65);
+    filter: blur(0.15em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* 3. DRIVE MOTION (Horizontal kinetic smear streak with scaleX & blur - @_code_and_chill_) */
+.gbtn[data-fx="drive"].is-go .g {
+  animation: g-drive 0.52s cubic-bezier(0.2, 0.75, 0.3, 1) both;
+}
+
+@keyframes g-drive {
+  0% {
+    transform: translateX(0) scaleX(1);
+    filter: blur(0);
+    opacity: 1;
+  }
+  42% {
+    transform: translateX(calc((1 - 2 * var(--rev, 0)) * -1.5em)) scaleX(2.3);
+    filter: blur(0.11em);
+    opacity: 0;
+    animation-timing-function: steps(1, end);
+  }
+  43% {
+    transform: translateX(calc((1 - 2 * var(--rev, 0)) * 1.5em)) scaleX(2.3);
+    filter: blur(0.11em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) scaleX(1);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* 4. FLIP 3D Kinetic Motion */
+.gbtn[data-fx="flip"].is-go .g {
+  animation: g-flip 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes g-flip {
+  0% {
+    transform: rotateX(0deg) translateY(0);
+  }
+  45% {
+    transform: rotateX(180deg) translateY(-0.4em);
+  }
+  100% {
+    transform: rotateX(360deg) translateY(0);
+  }
+}
+
+/* ========================================================
+   BLUR REVEAL & STAGGERED BLUR TYPOGRAPHY
+   ======================================================== */
+
+.blur-reveal {
+  font-size: 2rem;
+  color: #fff;
+  
+  /* Initial State: Hidden and Blurred */
+  opacity: 0;
+  filter: blur(16px);
+  letter-spacing: 6px;
+  transform: scale(0.95);
+  
+  /* Animation Settings */
+  animation: focusIn 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes focusIn {
+  0% {
+    opacity: 0;
+    filter: blur(16px);
+    letter-spacing: 6px;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    letter-spacing: normal;
+    transform: scale(1);
+  }
+}
+
+.staggered-blur {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.staggered-blur span {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(4px) scale(0.92);
+  animation: letterFocus 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+  
+  /* Calculates a staggered delay per letter */
+  animation-delay: calc(var(--delay) * 0.08s);
+}
+
+.staggered-blur .space-char {
+  display: inline-block;
+  width: 0.35em;
+}
+
+@keyframes letterFocus {
+  0% {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translateY(4px) scale(0.92);
+  }
+  50% {
+    opacity: 0.85;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ========================================================
+   PREMIUM PILL BUTTON (STAGGERED BLUR REVEAL)
+   ======================================================== */
+
+/* 1. Button Styling */
+.premium-btn {
+  background-color: #12131a;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* 2. Text Wrapper Base */
+.text-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 3. The Letter Animation Setup */
+.text-wrapper span {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(12px);
+  transform: scale(0.85) translateY(4px);
+  animation: blurReveal 0.7s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation-delay: calc(var(--idx) * 0.06s);
+}
+
+.text-wrapper .space-char {
+  display: inline-block;
+  width: 0.35em;
+}
+
+/* 4. Entry Animation Keyframes */
+@keyframes blurReveal {
+  0% {
+    opacity: 0;
+    filter: blur(14px);
+    transform: scale(0.85) translateY(6px);
+  }
+  50% {
+    opacity: 0.7;
+    filter: blur(6px);
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 5. Hover Interaction (Re-triggers the effect smoothly) */
+.premium-btn:hover {
+  background-color: #1a1c26;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.premium-btn:hover .text-wrapper span {
+  animation: blurRevealHover 0.65s cubic-bezier(0.25, 1, 0.5, 1) both;
+  animation-delay: calc(var(--idx) * 0.05s);
+}
+
+@keyframes blurRevealHover {
+  0% {
+    opacity: 0;
+    filter: blur(14px);
+    transform: scale(0.85) translateY(6px);
+  }
+  50% {
+    opacity: 0.7;
+    filter: blur(6px);
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+/* ========================================================
+   PREMIUM ADD TO CART BUTTON (SUCCESS POP ANIMATION)
+   ======================================================== */
+@keyframes success-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-success {
+  animation: success-pop 0.35s ease-out forwards;
+}
+
+/* ========================================================
+   PREMIUM FEATURE CARD (PURPLE LIQUID MORPH - REFINED)
+   ======================================================== */
+.premium-card {
+  position: relative;
+  width: 320px;
+  height: 405px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 27px;
+  box-shadow:
+    0 18px 45px rgba(74, 42, 140, 0.10),
+    0 4px 12px rgba(0, 0, 0, 0.035);
+  cursor: pointer;
+  transition:
+    transform 0.55s cubic-bezier(.16, 1, .3, 1),
+    box-shadow 0.55s ease;
+}
+
+/* =================================
+   PURPLE LIQUID
+================================= */
+.premium-card .liquid,
+.liquid {
+  position: absolute;
+  width: 220px;
+  height: 210px;
+  right: -72px;
+  top: -83px;
+  z-index: 1;
+  transform-origin: 75% 25%;
+  transition: transform 0.9s cubic-bezier(.16, 1, .3, 1);
+}
+
+/* main shape */
+.premium-card .liquid-main,
+.liquid-main {
+  position: absolute;
+  width: 205px;
+  height: 185px;
+  right: 0;
+  top: 0;
+  background: linear-gradient(
+    145deg,
+    #a34cff 0%,
+    #8133ef 48%,
+    #6022d6 100%
+  );
+  border-radius:
+    42% 58% 62% 38%
+    /
+    45% 40% 60% 55%;
+  transform: rotate(16deg);
+  transition:
+    transform 0.9s cubic-bezier(.16, 1, .3, 1),
+    border-radius 0.9s cubic-bezier(.16, 1, .3, 1);
+}
+
+/* lighter liquid */
+.premium-card .liquid-light,
+.liquid-light {
+  position: absolute;
+  width: 140px;
+  height: 130px;
+  top: 38px;
+  right: 32px;
+  background: linear-gradient(
+    145deg,
+    rgba(193, 101, 255, 0.85),
+    rgba(143, 57, 242, 0.55)
+  );
+  border-radius:
+    65% 35% 43% 57%
+    /
+    52% 63% 37% 48%;
+  transform: rotate(-12deg);
+  transition:
+    transform 1s cubic-bezier(.16, 1, .3, 1),
+    border-radius 1s ease;
+}
+
+/* darker bottom layer */
+.premium-card .liquid-dark,
+.liquid-dark {
+  position: absolute;
+  width: 115px;
+  height: 105px;
+  right: 4px;
+  bottom: 0;
+  background: linear-gradient(
+    145deg,
+    rgba(103, 31, 216, 0.6),
+    #5520c4
+  );
+  border-radius:
+    37% 63% 61% 39%
+    /
+    58% 39% 61% 42%;
+  transform: rotate(17deg);
+  transition:
+    transform 0.95s cubic-bezier(.16, 1, .3, 1),
+    border-radius 0.95s ease;
+}
+
+/* =================================
+   NUMBER
+================================= */
+.premium-card .number-circle,
+.number-circle {
+  position: absolute;
+  right: 27px;
+  top: 27px;
+  z-index: 10;
+  width: 47px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  transition: transform 0.7s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+/* =================================
+   CONTENT
+================================= */
+.premium-card .card-content,
+.card-content {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  padding: 51px 34px 28px;
+}
+
+/* =================================
+   ICON
+================================= */
+.premium-card .icon-box,
+.icon-box {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+  border-radius: 13px;
+  background: linear-gradient(
+    140deg,
+    #a74cff,
+    #7226df
+  );
+  color: #fff;
+  box-shadow: 0 9px 22px rgba(115, 37, 220, 0.36);
+  transition:
+    transform 0.6s cubic-bezier(.34, 1.56, .64, 1),
+    box-shadow 0.6s ease;
+}
+
+/* =================================
+   TYPOGRAPHY
+================================= */
+.premium-card .category,
+.category {
+  display: block;
+  margin-bottom: 9px;
+  color: #7130cf;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3.1px;
+  text-transform: uppercase;
+}
+
+.premium-card .title,
+.title {
+  margin: 0;
+  color: #17151b;
+  font-size: 29px;
+  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.premium-card .underline,
+.underline {
+  width: 50px;
+  height: 4px;
+  margin-top: 17px;
+  margin-bottom: 17px;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    #a747ff,
+    #6923dc
+  );
+  transform-origin: left;
+  transition: width 0.55s cubic-bezier(.16, 1, .3, 1);
+}
+
+.premium-card .description,
+.description {
+  width: 215px;
+  margin: 0;
+  color: #77727c;
+  font-size: 12.5px;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+/* =================================
+   DOTS
+================================= */
+.premium-card .dots,
+.dots {
+  position: absolute;
+  right: 31px;
+  bottom: 25px;
+  display: flex;
+  gap: 5px;
+}
+
+.premium-card .dots span,
+.dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7929df;
+  transition: transform 0.4s ease;
+}
+
+/* =================================
+   HOVER — VIDEO-LIKE TRANSFORMATION
+================================= */
+.premium-card:hover {
+  transform:
+    translateY(-7px)
+    scale(1.015);
+  box-shadow:
+    0 28px 60px rgba(82, 40, 170, 0.17),
+    0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Purple liquid expands */
+.premium-card:hover .liquid {
+  transform:
+    translate(-12px, 14px)
+    scale(1.3)
+    rotate(5deg);
+}
+
+.premium-card:hover .liquid-main {
+  transform:
+    rotate(29deg)
+    scale(1.08);
+  border-radius:
+    58% 42% 48% 52%
+    /
+    41% 61% 39% 59%;
+}
+
+.premium-card:hover .liquid-light {
+  transform:
+    translate(-16px, 18px)
+    rotate(-24deg)
+    scale(1.12);
+  border-radius:
+    44% 56% 68% 32%
+    /
+    62% 37% 63% 38%;
+}
+
+.premium-card:hover .liquid-dark {
+  transform:
+    translate(-19px, 17px)
+    rotate(30deg)
+    scale(1.14);
+  border-radius:
+    63% 37% 42% 58%
+    /
+    39% 59% 41% 61%;
+}
+
+/* Number reacts */
+.premium-card:hover .number-circle {
+  transform:
+    translate(-4px, 5px)
+    scale(1.06);
+}
+
+/* Icon floats */
+.premium-card:hover .icon-box {
+  transform:
+    translateY(-5px)
+    rotate(-4deg)
+    scale(1.07);
+  box-shadow: 0 14px 28px rgba(115, 37, 220, 0.48);
+}
+
+/* Purple line extends */
+.premium-card:hover .underline {
+  width: 77px;
+}
+
+/* Dots animate */
+.premium-card:hover .dots span:nth-child(1) {
+  transform: translateY(-3px);
+}
+
+.premium-card:hover .dots span:nth-child(2) {
+  transform: translateY(2px);
+}
+
+.premium-card:hover .dots span:nth-child(3) {
+  transform: translateY(-2px);
+}
+
