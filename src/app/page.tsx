@@ -17,6 +17,7 @@ import ExperienceShowcaseSection from "@/components/ExperienceShowcaseSection";
 import BetopiaOrbitalShowcase from "@/components/BetopiaOrbitalShowcase";
 import DynamicAiPromptConsole from "@/components/DynamicAiPromptConsole";
 import AgentPromptShowcase from "@/components/AgentPromptShowcase";
+import DayNightToggleShowcase from "@/components/DayNightToggleShowcase";
 import AddToCartDemoSection from "@/components/AddToCartDemoSection";
 import PremiumFeatureShowcase from "@/components/PremiumFeatureShowcase";
 import HeroInteractiveShowcase from "@/components/HeroInteractiveShowcase";
@@ -110,6 +111,9 @@ export default function Home() {
 
         {/* FEATURE: Premium AI Agent Prompt Input Interactive Component Showcase */}
         <AgentPromptShowcase />
+
+        {/* FEATURE: Atmospheric Day / Night Mode Toggle Component Showcase */}
+        <DayNightToggleShowcase />
 
         {/* Global Section Quick-Command Search Bar (Screenshot Style) */}
         <div className="bg-[#07080e] py-8 px-4 border-b border-zinc-800/80">
