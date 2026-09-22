@@ -898,3 +898,420 @@ body {
   transform: translateY(-2px);
 }
 
+/* =========================================================
+   DAY / NIGHT MODE TOGGLE BUTTON WITH MOVING CLOUDS & STARS
+   ========================================================= */
+
+.dnt-stage {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 30%, #3f6a97 0%, #123a63 70%);
+  transition: background 1.1s ease;
+}
+
+.dnt-stage.dnt-night {
+  background: radial-gradient(120% 90% at 50% 30%, #0a1230 0%, #04050f 75%);
+}
+
+/* PAGE STARS */
+.dnt-page-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.dnt-stage.dnt-night .dnt-page-stars {
+  opacity: 1;
+}
+
+.dnt-page-stars span {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: dntTwinkle 3s ease-in-out infinite;
+}
+
+@keyframes dntTwinkle {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* PAGE SHOOTING STARS */
+.dnt-shooting-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.dnt-stage.dnt-night .dnt-shooting-stars {
+  opacity: 1;
+}
+
+.dnt-shooting {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transform: rotate(-32deg);
+  animation: dntShoot 0.5s linear infinite;
+}
+
+.dnt-shooting::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 90px;
+  height: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9));
+}
+
+@keyframes dntShoot {
+  0% {
+    opacity: 0;
+    transform: rotate(-32deg) translateX(0);
+  }
+  2% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0;
+    transform: rotate(-32deg) translateX(-160px);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-32deg) translateX(-160px);
+  }
+}
+
+/* SWITCH */
+.dnt-switch {
+  position: relative;
+  border-radius: 48px;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35) inset, 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* TRACK */
+.dnt-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 48px;
+  overflow: hidden;
+  background: linear-gradient(100deg, #a9d3e8 0%, #5e9fd6 100%);
+  transition: background 1.1s ease;
+}
+
+.dnt-switch.dnt-night .dnt-track,
+.dnt-reflection.dnt-night .dnt-track {
+  background: linear-gradient(100deg, #12123f 0%, #2c2f60 100%);
+}
+
+.dnt-track::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 40%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* TOGGLE STARS */
+.dnt-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 1;
+}
+
+.dnt-switch.dnt-night .dnt-stars,
+.dnt-reflection.dnt-night .dnt-stars {
+  opacity: 1;
+}
+
+/* TOGGLE SHOOTING STARS */
+.dnt-toggle-shooting-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  overflow: hidden;
+  z-index: 2;
+  transition: opacity 1s ease;
+}
+
+.dnt-switch.dnt-night .dnt-toggle-shooting-stars {
+  opacity: 1;
+}
+
+.dnt-toggle-shooting {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  transform: rotate(-32deg);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.9);
+  animation: dntToggleShoot 3.5s linear infinite;
+}
+
+.dnt-toggle-shooting::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 55px;
+  height: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.85));
+}
+
+.dnt-toggle-shooting.dnt-s1 {
+  top: 25%;
+  left: 72%;
+  animation-delay: 0s;
+}
+
+.dnt-toggle-shooting.dnt-s2 {
+  top: 48%;
+  left: 48%;
+  animation-delay: -1.7s;
+}
+
+.dnt-toggle-shooting.dnt-s3 {
+  top: 18%;
+  left: 30%;
+  animation-delay: -2.8s;
+}
+
+@keyframes dntToggleShoot {
+  0% {
+    opacity: 0;
+    transform: rotate(-32deg) translateX(0);
+  }
+  5% {
+    opacity: 1;
+  }
+  18% {
+    opacity: 0;
+    transform: rotate(-32deg) translateX(-75px);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-32deg) translateX(-75px);
+  }
+}
+
+/* MOON */
+.dnt-moon {
+  position: absolute;
+  left: 12%;
+  top: 10%;
+  width: 9%;
+  aspect-ratio: 1;
+  transform: translateY(-50%) rotate(-130deg);
+  transition: opacity 0.45s ease, transform 0.6s ease;
+  z-index: 2;
+  user-select: none;
+}
+
+/* SUN */
+.dnt-sun {
+  position: absolute;
+  right: 12%;
+  top: 50%;
+  width: 13%;
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff6c8, #ffe98a 60%, #f7d55c 100%);
+  box-shadow: 0 0 14px 4px rgba(255, 233, 138, 0.8);
+  transition: opacity 0.8s ease, transform 0.6s ease;
+  z-index: 2;
+}
+
+/* BIRDS */
+.dnt-birds {
+  position: absolute;
+  top: 26%;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  transition: opacity 0.8s ease;
+  z-index: 2;
+}
+
+.dnt-bird {
+  position: absolute;
+  top: 0;
+  width: 16px;
+  height: 9px;
+  animation: dntFly 7s linear infinite;
+}
+
+.dnt-bird svg,
+.dnt-bird path {
+  display: block;
+}
+
+.dnt-wing {
+  transform-origin: 7px 6px;
+  animation: dntFlap 0.5s ease-in-out infinite;
+}
+
+.dnt-bird.dnt-b2 {
+  animation-delay: -2.3s;
+  top: 35%;
+}
+
+.dnt-bird.dnt-b2 .dnt-wing {
+  animation-delay: -0.18s;
+}
+
+.dnt-bird.dnt-b3 {
+  animation-delay: -4.6s;
+  top: 8%;
+}
+
+.dnt-bird.dnt-b3 .dnt-wing {
+  animation-delay: -0.32s;
+}
+
+@keyframes dntFly {
+  from {
+    left: 75%;
+  }
+  to {
+    left: -15%;
+  }
+}
+
+@keyframes dntFlap {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.35);
+  }
+}
+
+/* CLOUD SYSTEM WITH CONTINUOUS MOVEMENT */
+.dnt-clouds {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4%;
+  height: 48%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.dnt-cloud-track {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 200%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  animation: dntCloudMove 16s linear infinite;
+}
+
+.dnt-cloud-img {
+  flex: 0 0 25%;
+  width: 28%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center bottom;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  transform: scale(1.12);
+  margin-left: -2.5%;
+  margin-right: -2.5%;
+}
+
+@keyframes dntCloudMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* KNOB */
+.dnt-knob {
+  position: absolute;
+  top: 8%;
+  left: 2.5%;
+  width: 27%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 32%, #fffdf5 0%, #fed766 65%, #f59e0b 100%);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 0 8px 1px rgba(245, 158, 11, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.7);
+  transition: 
+    left 0.65s cubic-bezier(0.65, -0.1, 0.25, 1.15), 
+    background 0.6s ease,
+    box-shadow 0.6s ease;
+  z-index: 6;
+}
+
+.dnt-switch.dnt-night .dnt-knob,
+.dnt-reflection.dnt-night .dnt-knob {
+  background: radial-gradient(circle at 35% 32%, #cbd5e1 0%, #94a3b8 55%, #64748b 100%);
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 0 8px 1px rgba(148, 163, 184, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+}
+
+.dnt-switch.dnt-on .dnt-knob,
+.dnt-reflection.dnt-on .dnt-knob {
+  left: 70.5%;
+}
+
+/* REFLECTION */
+.dnt-reflection {
+  aspect-ratio: 300 / 96;
+  pointer-events: none;
+  transform: scaleY(-1);
+  filter: blur(2px);
+  opacity: 0.3;
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 75%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 75%);
+}
+
+.dnt-reflection .dnt-track,
+.dnt-reflection .dnt-knob {
+  pointer-events: none;
+}
+
+
